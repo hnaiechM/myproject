@@ -1,0 +1,88 @@
+<style>
+  /* styles.css */
+
+  /* Style général pour le contenu */
+  .container {
+    margin-top: 20px;
+  }
+
+  /* Style pour la partie gauche (détails du poste) */
+  .col-md-8 {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h1.text-center {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  /* Style pour la partie droite (événements en relation) */
+  .col-md-4 {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .row .col-md-7 {
+    margin-bottom: 10px;
+  }
+
+  strong {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="text-center mt-2">Detail Poste</h1>
+      <img src="{{ postes.image.url }}" alt="" style="max-width: 600px;">
+      <p>{{postes.type}}</p>
+      <p>{{postes.slug}}</p>
+      <p>{{postes.date}}</p>
+    </div>
+    <div class="col-md-4">
+      <h3 class="mt-2">Les postes en relations</h3>
+      <div class="row">
+        {% for poste in postes_en_relation %}
+        <div class="col-md-7 mb-1">
+          <img src="{{ poste.image.url }}" alt="" style="max-width: 210px;">
+        </div>
+        <div class="col-5">
+          <strong>{{ poste.type }}</strong>
+          <p>{{poste.slug}}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>plus_Detail</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' %}" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet"
+    href="{% static 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap' %}" />
+  <link rel="stylesheet" href="{% static 'css/Bootstrap.min.css' %}">
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+</head>
+
+<body>
+
+  
+</body>
+
+</html>
+<h1 class="text-center mt-3">Bienvenue sur notre app</h1>
+  <div class="container">
+    <div class="row">
+      {% for poste in postes %}
+      <div class="col-12-md col-lg-3 col-xl-3">
+        <a href="{% url 'detail' poste.id %}">
+          <div class="card-body" style="height: 230px;">
+            <img src="{{poste.image.url}}" class="card-img-top" alt="Fissure in Sandstone" />
+        </a>
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'detail' poste.id %}">{{poste.type}}</a></h5>
+          <p class="card-text">{{poste.date}}</p>
+          <a href="{% url 'detail' poste.id %}" class="btn btn-primary">Button</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+  <img src="{{poste.image.url}}" alt="" style="max-width: 600px;">
+
+  <form class="d-flex" action="{% url 'search' %}">
+    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search" name="poste">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>

@@ -1,0 +1,111 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+<style>
+  /* Style pour le titre "Mes Postes" */
+h2 {
+  margin-bottom: 20px;
+}
+
+/* Style pour les boutons Ajouter Poste */
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border-color: #6c757d;
+}
+
+/* Style pour les boutons d'édition et de suppression */
+.btn-info, .btn-info:hover {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-danger, .btn-danger:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Style pour la couleur de fond de la carte */
+.card {
+  background-color: #f8f9fa;
+}
+
+/* Style pour la couleur de fond du tableau */
+.table {
+  background-color: #fff;
+}
+
+/* Style pour les cellules du tableau */
+.table th, .table td {
+  border-color: #dee2e6;
+}
+
+/* Style pour la couleur du texte des actions */
+.btn-info, .btn-danger {
+  color: #fff;
+}
+
+/* Style pour la marge inférieure de l'élément avec la classe .mt-3 */
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+/* Style pour la taille du texte des alertes */
+.alert-heading {
+  font-size: 1.25rem;
+}
+
+/* Style pour le lien dans l'alerte */
+.alert-link {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Style pour la couleur du texte du titre h1 */
+h1 {
+  color: #dc3545;
+}
+
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Mes Postes</h2>
+    </div>
+    <div class="col-md-12">
+      <a href="{% url 'add-poste' %}" class="btn btn-secondary float-right"><i class="fas fa-plus"></i>Ajouter Poste</a>
+    </div>
+    {% if list_postes %}
+    <div class="card">
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="h6">Titre</th>
+              <th class="h6">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {% for poste in list_postes %}
+               <tr>
+                 <td><a href="#">{{poste}}</a></td>
+                 <td><a href="#">{{poste.type}}</a></td>
+                 <td>
+                  <a href="{% url 'update-poste' poste.pk %}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                  <a href="{% url 'delete-poste' poste.pk  %}" class="btn btn-info"><i class="fas fa-trash"></i></a>
+                </td>
+               </tr>
+              {% endfor %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {% else %}
+    <h1>Vous n'avez aucun poste </h1>
+    {% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<style>
+  /* styles.css */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  form .form-group {
+    margin-bottom: 15px;
+  }
+
+  form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form textarea,
+  form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  form button {
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  form button:hover {
+    background-color: #218838;
+  }
+</style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{form}}
+            <button class="btn btn-success btn-block">Modifier</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

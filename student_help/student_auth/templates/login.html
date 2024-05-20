@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %} aa {% endblock %}
+{% block content %}
+<div class="container">
+  <div class="col-md-12 mt-5">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-danger text-center">
+      <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <form action="" method="POST" novalidate>{% csrf_token %}
+      <div class="card">
+        <div class="card-header text-center">
+          <i class="fas fa-user"></i>
+          Connexion au Student
+        </div>
+        <div class="card-body">
+          <label for="id_usename">Nom Etudiant</label>
+          {% if form.username.errors %}
+          {% for error in form.username.errors %}
+          <div class="div-error" {{form.username.name}}><small class="text-danger">{{error}}</small></div>
+          {% endfor %}
+          {% endif %}
+          {{form.username}}
+          <label for="id_pwd">Mot de passe</label>
+          {% if form.pwd.errors %}
+          {% for error in form.pwd.errors %}
+          <div><small class="text-danger">{{error}}</small></div>
+          {% endfor %}
+          {% endif %}
+          {{form.pwd}}
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary btn-block">SE CONNECTER</button>
+        </div>
+        <p class="mt-2">Vous n'avez pas de compts? <a href="{% url 'register' %}">Inscrivez-vous</a></p>
+
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+<script>
+  $(document).ready(function() {
+      $('input').keyup(function(){
+        let textSaisi = $(this).val();
+
+        let attrName = $(this).val();
+        let validatorElement = ".div-error"+attrName;
+        if(textSaisi === ""){
+          if($(this).hasClass('is-invalid')){
+            $(this).addClass('is-invalid');
+            $(validatorElement).show();
+          }
+        } else {
+          $(this).removeClass('is-invalid');
+        }
+      })
+  })
+</script>
+{% block scripts %}
+
+{% endblock %}

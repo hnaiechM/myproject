@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %} Tableau de bord {% endblock %} </title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+    href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' %}" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet"
+    href="{% static 'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap' %}" />
+  <!-- MDB -->
+  <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 1rem;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+    }
+
+    .navbar a:hover {
+      background-color: #575757;
+      border-radius: 4px;
+    }
+
+    /* Other styles... */
+  </style>
+
+</head>
+
+<body>
+  {% include "navadmin.html" %}
+  {% block content %}
+  {% endblock %}
+  {% include "footeradmin.html" %}
+  <script type="text/javascript" src="js/mdb.umd.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+
+</body>
+
+</html>

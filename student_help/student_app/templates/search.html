@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static}
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    {% for poste in liste_poste %}
+
+    <div class="col-12 col-md-6 col-lg-3 col-xl-3">
+      <div class="card mb-8">
+        <a href="{% url 'detail' poste.id %}">
+          <div class="card-body" style="height: 230px;">
+            <img src="{{poste.image.url}}" class="card-img-top" alt="Fissure in Sandstone" />
+        </a>
+        <div class="card-body" style="height: 240px;">
+          <h5 class="card-title"><a href="{% url 'detail' poste.id %}">{{poste.type}}</a></h5>
+          <p class="card-text">{{poste.date}}</p>
+          <a href="{% url 'detail' poste.id %}" class="btn btn-primary">Button</a>
+        </div>
+      </div>
+    </div>
+  </div>
+     {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
